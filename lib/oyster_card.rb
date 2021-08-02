@@ -1,13 +1,16 @@
+require "station"
+
 DEFAULT_BALANCE = 0
 TOP_UP_LIMIT = 90
 MINIMUM_REQUIRED = 1
 
 class OysterCard
-  attr_accessor :balance, :in_use
+  attr_accessor :balance, :in_use, :journeys?
 
   def initialize(balance = DEFAULT_BALANCE, in_use = false)
     @balance = balance
     @in_use = in_use
+    @journeys = []
   end
 
   def top_up(value)
@@ -25,9 +28,11 @@ class OysterCard
     @in_use = false
   end
 
-  def touch_in
+  def touch_in(station)
     message = "You must top_up" 
     raise message unless minimum_balance?
+    raise "This is not a station" unless station.instance_of?(Station)
+    @journeys << station
     @in_use = true
   end
 
