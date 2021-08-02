@@ -24,32 +24,35 @@ describe OysterCard do
   end
 
   describe "#in_journey?" do
-    # it "should return in_use attribute" do
-    #   expect(subject.in_journey?).to 
-    # end
-
-    it "should return in_use attribute" do
-      subject.top_up(5)
-      subject.touch_in(station)
-      expect(subject.in_journey?).to eq(subject.in_use)
-    end
-  end
-
-  describe "#touch_in" do
-    it "should change in_use attribute to true" do
+    it "should use entry_station attribute" do
       subject.top_up(5)
       subject.touch_in(station)
       expect(subject.in_journey?).to eq(true)
     end
 
+    it "should use entry_station attribute" do
+      subject.top_up(5)
+      subject.touch_in(station)
+      subject.touch_out(1)
+      expect(subject.in_journey?).to eq(false)
+    end
+  end
+
+  describe "#touch_in" do
     it "should raise error if you're balance < #{MINIMUM_REQUIRED}" do
       expect { subject.touch_in(station) }.to raise_error "You must top_up"
     end
 
-    it "should record touch_in station" do
+    it "should record last station" do
       subject.top_up(10)
       subject.touch_in(station)
       expect(subject.journeys.last).to eq(station)
+    end
+
+    it "should record entry_station" do
+      subject.top_up(10)
+      subject.touch_in(station)
+      expect(subject.entry_station).to eq(station)
     end
 
     it "should only only accept stations as arguments" do
@@ -59,9 +62,9 @@ describe OysterCard do
   end
 
   describe "#touch_out" do
-    it "should change in_use attribute to false" do
+    it "should make entry_station attribute to nil" do
       subject.touch_out(5)
-      expect(subject.in_journey?).to eq(false)
+      expect(subject.entry_station).to eq(nil)
     end
 
     it "should reduce balance by fare of journey" do
