@@ -16,8 +16,7 @@ class OysterCard
   end
 
   def deduct(fare)
-    message = "You must top_up"
-    (minimum_balance?) ? ( @balance = @balance - fare) : (raise message)
+     @balance = @balance - fare
   end
 
   def in_journey?
@@ -29,6 +28,8 @@ class OysterCard
   end
 
   def touch_in
+    message = "You must top_up" 
+    raise message unless minimum_balance?
     @in_use = true
   end
 

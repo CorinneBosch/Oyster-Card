@@ -21,10 +21,6 @@ describe OysterCard do
   end
 
   describe "#deduct" do
-    it "should raise error if you're balance < #{MINIMUM_REQUIRED}" do
-      expect { subject.deduct(5) }.to raise_error "You must top_up"
-    end
-
     it "should reduce balance by fare" do
       subject.top_up(10)
       previous_balance = subject.balance
@@ -38,6 +34,7 @@ describe OysterCard do
     end
 
     it "should return in_use attribute" do
+      subject.top_up(5)
       subject.touch_in
       expect(subject.in_journey?).to eq(subject.in_use)
     end
@@ -45,8 +42,13 @@ describe OysterCard do
 
   describe "#touch_in" do
     it "should change in_use attribute to true" do
+      subject.top_up(5)
       subject.touch_in
       expect(subject.in_journey?).to eq(true)
+    end
+
+    it "should raise error if you're balance < #{MINIMUM_REQUIRED}" do
+      expect { subject.touch_in }.to raise_error "You must top_up"
     end
   end
 
