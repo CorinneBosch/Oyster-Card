@@ -2,6 +2,8 @@ require "oyster_card"
 require "station"
 
 describe OysterCard do
+
+  let(:station) { Station.new }
   describe "balance attribute" do
     it "should have a default balance" do
       expect(subject.balance).to eq(DEFAULT_BALANCE)
@@ -28,7 +30,7 @@ describe OysterCard do
 
     it "should return in_use attribute" do
       subject.top_up(5)
-      subject.touch_in
+      subject.touch_in(station)
       expect(subject.in_journey?).to eq(subject.in_use)
     end
   end
@@ -36,22 +38,23 @@ describe OysterCard do
   describe "#touch_in" do
     it "should change in_use attribute to true" do
       subject.top_up(5)
-      subject.touch_in
+      subject.touch_in(station)
       expect(subject.in_journey?).to eq(true)
     end
 
     it "should raise error if you're balance < #{MINIMUM_REQUIRED}" do
-      expect { subject.touch_in }.to raise_error "You must top_up"
+      expect { subject.touch_in(station) }.to raise_error "You must top_up"
     end
 
     it "should record touch_in station" do
-      station = Station.new
+      subject.top_up(10)
       subject.touch_in(station)
       expect(subject.journeys.last).to eq(station)
     end
 
     it "should only only accept stations as arguments" do
-      expect(subject.touch_in(airport)).to raise_error "This is not a station"
+      subject.top_up(10)
+      expect { subject.touch_in('airport') }.to raise_error "This is not a station"
     end
   end
 

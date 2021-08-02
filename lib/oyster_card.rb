@@ -5,7 +5,7 @@ TOP_UP_LIMIT = 90
 MINIMUM_REQUIRED = 1
 
 class OysterCard
-  attr_accessor :balance, :in_use, :journeys?
+  attr_accessor :balance, :in_use, :journeys
 
   def initialize(balance = DEFAULT_BALANCE, in_use = false)
     @balance = balance
