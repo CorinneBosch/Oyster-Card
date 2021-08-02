@@ -1,4 +1,5 @@
 require "oyster_card"
+require "station"
 
 describe OysterCard do
   describe "balance attribute" do
@@ -41,6 +42,16 @@ describe OysterCard do
 
     it "should raise error if you're balance < #{MINIMUM_REQUIRED}" do
       expect { subject.touch_in }.to raise_error "You must top_up"
+    end
+
+    it "should record touch_in station" do
+      station = Station.new
+      subject.touch_in(station)
+      expect(subject.journeys.last).to eq(station)
+    end
+
+    it "should only only accept stations as arguments" do
+      expect(subject.touch_in(airport)).to raise_error "This is not a station"
     end
   end
 
