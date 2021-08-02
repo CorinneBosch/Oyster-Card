@@ -24,9 +24,9 @@ describe OysterCard do
   end
 
   describe "#in_journey?" do
-    it "should return in_use attribute" do
-      expect(subject.in_journey?).to eq(subject.in_use)
-    end
+    # it "should return in_use attribute" do
+    #   expect(subject.in_journey?).to 
+    # end
 
     it "should return in_use attribute" do
       subject.top_up(5)

@@ -20,13 +20,12 @@ class OysterCard
 
 
   def in_journey?
-    @entry_statio != nil
+    @entry_station != nil
   end
 
   def touch_out(fare)
     @entry_station = nil
     deduct(fare)
-    @in_use = false
   end
 
   def touch_in(station)
@@ -35,7 +34,6 @@ class OysterCard
     raise "This is not a station" unless station.instance_of?(Station)
     @entry_station = station
     @journeys << station
-    @in_use = true
   end
 
   private 
