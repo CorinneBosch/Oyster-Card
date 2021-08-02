@@ -3,7 +3,7 @@ TOP_UP_LIMIT = 90
 MINIMUM_REQUIRED = 1
 
 class OysterCard
-  attr_accessor :balance, in_use
+  attr_accessor :balance, :in_use
 
   def initialize(balance = DEFAULT_BALANCE, in_use = false)
     @balance = balance
@@ -18,6 +18,18 @@ class OysterCard
   def deduct(fare)
     message = "You must top_up"
     (minimum_balance?) ? ( @balance = @balance - fare) : (raise message)
+  end
+
+  def in_journey?
+    @in_use
+  end
+
+  def touch_out
+    @in_use = false
+  end
+
+  def touch_in
+    @in_use = true
   end
 
   private 

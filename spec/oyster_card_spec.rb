@@ -32,26 +32,28 @@ describe OysterCard do
     end
   end
 
+  describe "#in_journey?" do
+    it "should return in_use attribute" do
+      expect(subject.in_journey?).to eq(subject.in_use)
+    end
+
+    it "should return in_use attribute" do
+      subject.touch_in
+      expect(subject.in_journey?).to eq(subject.in_use)
+    end
+  end
+
   describe "#touch_in" do
     it "should change in_use attribute to true" do
-      expect(subject.in_use).to eq(true)
+      subject.touch_in
+      expect(subject.in_journey?).to eq(true)
     end
   end
 
   describe "#touch_out" do
     it "should change in_use attribute to false" do
-      expect(subject.in_use).to eq(false)
-    end
-  end
-
-  describe "#in_journey?" do
-    it "should return in_use attribute" do
-      expect(subject.in_use).to eq(false)
-    end
-
-    it "should return in_use attribute" do
-      subject.touch_in
-      expect(subject.in_use).to eq(true)
+      subject.touch_out
+      expect(subject.in_journey?).to eq(false)
     end
   end
 end
