@@ -20,14 +20,6 @@ describe OysterCard do
     end
   end
 
-  describe "#deduct" do
-    it "should reduce balance by fare" do
-      subject.top_up(10)
-      previous_balance = subject.balance
-      expect(subject.deduct(5)).to eq(previous_balance - 5)
-    end
-  end
-
   describe "#in_journey?" do
     it "should return in_use attribute" do
       expect(subject.in_journey?).to eq(subject.in_use)
@@ -54,8 +46,13 @@ describe OysterCard do
 
   describe "#touch_out" do
     it "should change in_use attribute to false" do
-      subject.touch_out
+      subject.touch_out(5)
       expect(subject.in_journey?).to eq(false)
+    end
+
+    it "should reduce balance by fare of journey" do
+      subject.top_up(10)
+      expect { subject.touch_out(5) }.to change{ subject.balance }.by(-5)
     end
   end
 end

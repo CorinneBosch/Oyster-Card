@@ -15,15 +15,13 @@ class OysterCard
     (limit?(value)) ? ( @balance = @balance + value) : (raise message)
   end
 
-  def deduct(fare)
-     @balance = @balance - fare
-  end
 
   def in_journey?
     @in_use
   end
 
-  def touch_out
+  def touch_out(fare)
+    deduct(fare)
     @in_use = false
   end
 
@@ -41,5 +39,9 @@ class OysterCard
 
   def minimum_balance?
     @balance >= MINIMUM_REQUIRED
+  end
+
+  def deduct(fare)
+    @balance = @balance - fare
   end
 end
