@@ -1,4 +1,5 @@
 DEFAULT_BALANCE = 0
+TOP_UP_LIMIT = 90
 
 class OysterCard
   attr_accessor :balance
@@ -7,19 +8,15 @@ class OysterCard
     @balance = balance
   end
 
-  def top_up(value) 
-    # (limit?(value)) ? ( @balance = @balance + value) : (raise 'you can not top up this much')
-    if limit?(value)
-      @balance = @balance + value
-    else 
-      raise "you can not top up this much"
-    end
+  def top_up(value)
+    message = "the top_up limit is #{TOP_UP_LIMIT}"
+    (limit?(value)) ? ( @balance = @balance + value) : (raise message)
   end
 
-  # private 
+  private 
 
   def limit?(value)
-     @balance + value <= 90
+     @balance + value <= TOP_UP_LIMIT
   end
 
 end
