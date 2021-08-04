@@ -2,8 +2,10 @@ require 'oyster_card'
 require 'station'
 
 describe OysterCard do
+  let(:station) { Station.new(:name, :zone) }
+  let(:journey) { double Journey, :start => :station, :finish => :station }
+  # journey_klass = class_double(Deck, build: ['Ace', 'Queen']).as_stubbed_const
 
-  let(:station) { Station.new }
   describe "@balance" do
     it "should have a default balance" do
       expect(subject.balance).to eq(DEFAULT_BALANCE)
