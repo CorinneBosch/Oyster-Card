@@ -13,7 +13,7 @@ describe Station do
   end 
 
   it 'has a zone by creation' do
-    subject = Station.new(name, 1)
+    subject = Station.new(:name, 1)
     expect(subject.zone).to eq(1)
   end
 

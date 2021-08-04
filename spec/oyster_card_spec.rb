@@ -4,11 +4,15 @@ require 'station'
 describe OysterCard do
 
   let(:station) { Station.new }
+
+  let(:card) { Card.new(init balbla)} { argument}
   describe "@balance" do
     it "should have a default balance" do
       expect(subject.balance).to eq(DEFAULT_BALANCE)
     end
   end
+
+
 
   describe '@journeys' do
     it 'should be empty when and Oyster Card is initialised' do
@@ -19,7 +23,6 @@ describe OysterCard do
       subject.top_up(10)
       subject.touch_in(station)
       subject.touch_out(station, 5)
-
       expect(subject.journeys.last).to eq({:start => station, :finish => station})
     end
   end
@@ -97,3 +100,5 @@ describe OysterCard do
     end
   end
 end
+
+

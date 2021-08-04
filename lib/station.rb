@@ -6,5 +6,5 @@ class Station
     @name = name
     @zone = zone
   end
-  
+
 end
