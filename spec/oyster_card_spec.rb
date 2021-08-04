@@ -1,10 +1,10 @@
-require "oyster_card"
-require "station"
+require 'oyster_card'
+require 'station'
 
 describe OysterCard do
 
   let(:station) { Station.new }
-  describe "balance attribute" do
+  describe "@balance" do
     it "should have a default balance" do
       expect(subject.balance).to eq(DEFAULT_BALANCE)
     end
@@ -33,7 +33,7 @@ describe OysterCard do
     it "should use entry_station attribute" do
       subject.top_up(5)
       subject.touch_in(station)
-      subject.touch_out(1)
+      subject.touch_out(station, 1)
       expect(subject.in_journey?).to eq(false)
     end
   end
@@ -46,7 +46,7 @@ describe OysterCard do
     it "should record last station" do
       subject.top_up(10)
       subject.touch_in(station)
-      expect(subject.journeys.last).to eq(station)
+      expect(subject.journeys.last[:entry]).to eq(station)
     end
 
     it "should record entry_station" do
@@ -63,13 +63,23 @@ describe OysterCard do
 
   describe "#touch_out" do
     it "should make entry_station attribute to nil" do
-      subject.touch_out(5)
+      subject.top_up(10)
+      subject.touch_in(station)
+      subject.touch_out(station, 5)
       expect(subject.entry_station).to eq(nil)
+    end
+
+    it 'should record exit station in journeys' do
+      subject.top_up(10)
+      subject.touch_in(station)
+      subject.touch_out(station, 5)
+      expect(subject.exit_station).to eq(station)
     end
 
     it "should reduce balance by fare of journey" do
       subject.top_up(10)
-      expect { subject.touch_out(5) }.to change{ subject.balance }.by(-5)
+      subject.touch_in(station)
+      expect { subject.touch_out(station, 5) }.to change{ subject.balance }.by(-5)
     end
   end
 end
