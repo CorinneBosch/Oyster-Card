@@ -26,7 +26,7 @@ class OysterCard
   def touch_out(exit_s, fare)
     @entry_station = nil
     @exit_station = exit_s
-    @journeys.last[:value] = exit_s
+    @journeys.last[:finish] = exit_s
     deduct(fare)
   end
 
@@ -35,7 +35,7 @@ class OysterCard
     raise message unless minimum_balance?
     raise "This is not a station" unless entry.instance_of?(Station)
     @entry_station = entry
-    @journeys << { :entry => entry }
+    @journeys << { :start => entry }
   end
 
   private 

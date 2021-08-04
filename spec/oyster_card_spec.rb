@@ -10,6 +10,20 @@ describe OysterCard do
     end
   end
 
+  describe '@journeys' do
+    it 'should be empty when and Oyster Card is initialised' do
+      expect(subject.journeys.empty?).to be(true)
+    end
+
+    it 'should create one journey after succesfully touching in and out' do
+      subject.top_up(10)
+      subject.touch_in(station)
+      subject.touch_out(station, 5)
+
+      expect(subject.journeys.last).to eq({:start => station, :finish => station})
+    end
+  end
+
   describe "#top_up" do
     it "should top up by given argument" do
       opening_balance = subject.balance
@@ -46,7 +60,7 @@ describe OysterCard do
     it "should record last station" do
       subject.top_up(10)
       subject.touch_in(station)
-      expect(subject.journeys.last[:entry]).to eq(station)
+      expect(subject.journeys.last[:start]).to eq(station)
     end
 
     it "should record entry_station" do
