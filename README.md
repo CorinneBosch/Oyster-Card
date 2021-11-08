@@ -23,7 +23,7 @@ Goals:
 
 1. **Fork** this [boris-bike repository](https://github.com/CorinneBosch/Oyster-Card/) 
 2. Then clone **your** fork to your computer.
-3. Ensure you have `Ruby` and `rspec` installed. Check ruby version with `ruby-v`
+3. Ensure you have `Ruby` and `rspec` installed. Check ruby version with `ruby -v`
 4. Install bundler if you haven't already.
 `gem install bundler`
 5. Install the gems required by this repository.
