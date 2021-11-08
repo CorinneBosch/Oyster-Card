@@ -1,16 +1,16 @@
 Oyster Card
 ==================
 
-## Afternoon challenge Oyster Card
-First introduction to pair programming, implementing the follwoing practices:
+## Afternoon challenge: Oyster Card
+In this challenge we learned & implementing the follwoing practices while pair programming:
 
 - Create a gemfile & initialize rspec
 - Working with user stories
 - Domain Modeling
 - Feature and Unit testing
 - Isolating test with doubles and mocks
-- Debugging
 - Class extraction
+- Follow an effective debugging process
 
 Goals:
 - Use all of week 1's skills (don't underestimate the importance of this)
