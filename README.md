@@ -1,6 +1,10 @@
 Oyster Card
 ==================
 
+<div align="left"> 
+<a href="https://en.wikipedia.org/wiki/Oyster_card" target="_blank"> <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/Oyster_Card.jpeg/250px-Oyster_Card.jpeg" alt="oystercard-wiki" width="300"/> </a> 
+<div>
+
 ## Afternoon challenge: Oyster Card
 In this challenge we learned & implementing the follwoing practices while pair programming:
 
@@ -29,7 +33,7 @@ Goals:
 5. Install the gems required by this repository.
 `bundle install`
 
-## Interact with the program
+## Interact with the programme
 
 You can frature test and run the boris-bike program in any `code editor` or `IRB`. 
 
