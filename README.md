@@ -37,14 +37,16 @@ You can frature test and run the boris-bike program in any `code editor` or `IRB
 
 To test all units and features at once in your terminal.
 Print out the format documentation with the -fd shortcut.
-
+```
 $ rspec
 $ rspec -fd
+```
 
 To test inividual unit test in your terminal:
-
+```
 $ rspec spec/oyster_card_spec.rb -fd
 $ rspec spec/station_spec.rb -fd
+```
 
 ## The oyster card challenge is built upon the following user stories:
 
