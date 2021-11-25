@@ -4,6 +4,10 @@ Oyster Card
 <div align="left"> 
 <a href="https://en.wikipedia.org/wiki/Oyster_card" target="_blank"> <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/Oyster_Card.jpeg/250px-Oyster_Card.jpeg" alt="oystercard-wiki" width="300"/> </a> 
 <div>
+  
+______
+ 
+[Set up](#Setup) | [Interact](#Interact) | [Run Tests](#Tests) | [User Stories](#User-Stories) 
 
 ## Afternoon challenge: Oyster Card
 In this challenge we learned & implementing the follwoing practices while pair programming:
@@ -23,7 +27,7 @@ Goals:
 - Explain some basic OO principles and tie them to high level concerns (e.g. ease of change)
 - Review another person's code and give them meaningful feedback
 
-## Setup
+## <a name="Setup">Set up</a>
 
 1. **Fork** this [boris-bike repository](https://github.com/CorinneBosch/Oyster-Card/) 
 2. Then clone **your** fork to your computer.
@@ -33,13 +37,13 @@ Goals:
 5. Install the gems required by this repository.
 `bundle install`
 
-## Interact with the programme
-
+## <a name="Interact">Interact with the programme</a>
+  
 You can frature test and run the boris-bike program in any `code editor` or `IRB`. 
 
-## Run test 
-
-To test all units and features at once in your terminal.
+## <a name="Tests">Run test</a>
+  
+To test all units and features at once in your terminal.\
 Print out the format documentation with the -fd shortcut.
 ```
 $ rspec
@@ -52,7 +56,7 @@ $ rspec spec/oyster_card_spec.rb -fd
 $ rspec spec/station_spec.rb -fd
 ```
 
-## The oyster card challenge is built upon the following user stories:
+## <a name="User-Stories">The oyster card challenge is built upon the following user stories:</a>
 
 ```
 In order to use public transport
